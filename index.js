@@ -33,9 +33,9 @@ function toLeet(str) {
         "s": "$"
     }
     let newStr = str.toLowerCase().match(/[a-z]/g);
-    for(let i = 0; i < str.length; i++){
+    for (let i = 0; i < str.length; i++) {
         let char = newStr[i];
-        if(leetAlphaMap[char]){
+        if (leetAlphaMap[char]) {
             newStr[i] = leetAlphaMap[char];
         }
     }
@@ -48,6 +48,43 @@ function wordMap(word) {
     return wMap;
 }
 
-let output = toLeet("Angel");
-// angel
+//interview question I was given
+/**
+ * The vowel count function was a simple interview question I was given
+ * 
+ * The solution I went with is the comment at the beginning of the function
+ * 
+ * Although what I went with worked it has a lot of room for improvement
+ */
+function vowelCount(str) {
+    /**
+     * Given any string return the count of the vowels
+     * 
+     * Input: "Hello world!"
+     * Output: 3
+     * 
+     * let vowels = ['a', 'e', 'i', 'o', 'u'];
+     * let vowelCount = 0;
+     * str.toLowerCase().match(/[a-z]/g).map(char => {
+     *    return vowelCount.indexOf(char) !== -1 ? vowelCount++ : '';
+     * });
+     * 
+     * 
+     */
+
+    //Optimization of my solution but still can be improved further
+    // Using regexc to directly match the vowels and outputing the results length
+    // let vowels = ['a', 'e', 'i', 'o', 'u'];
+    // let vowelCount = 0;
+    // str.toLowerCase().match(/[a-z]/g).map(char => vowels.indexOf(char) !== -1 ? vowelCount++ : '');
+
+
+    //Finding just the vowels in the string is way more efficient
+    return str.toLowerCase().match(/(a|e|i|o|u)/g).length;
+}
+
+
+let input = "Hello, world!";
+let output = vowelCount(input);
+console.log("Input: ", input);
 console.log("output: ", output);
